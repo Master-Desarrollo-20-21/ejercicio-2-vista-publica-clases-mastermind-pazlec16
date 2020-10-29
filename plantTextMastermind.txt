@@ -1,0 +1,53 @@
+@startuml
+
+title Mastermind - Class Diagram
+
+
+class Mastermind {
+
+  +int countAttempt
+  +void playSecretCombination()
+  +void restarGame()
+  +void finishGame()
+}
+
+class Player {
+
+  +void proposeCombination()
+}
+
+class Combination {
+
+
+  +void isEqual()
+  +void isDifferent()
+}
+
+class Result {
+
++boolean isWinner()
++boolean isLooser()
+}
+
+class SecretCombination {
+
+  +List colors
+  +void actualCombination()
+
+}
+
+class ProposeCombination {
+
+  +List colors
+  +void actualCombination()
+}
+
+Mastermind *-down- "2" Result
+Result *-down- "many" Combination
+Mastermind *-down- "1" Player
+Combination<|-down- SecretCombination
+Combination<|-down- ProposeCombination
+Player -> ProposeCombination
+
+
+@enduml
